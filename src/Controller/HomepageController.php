@@ -13,21 +13,11 @@ use Symfony\Component\Process\Process;
 class HomepageController extends AbstractController
 {
     /**
-     * @Route("/homepage")
+     * @Route("/")
      */
-    public function homepage()
+    public function homepage(): Response
     {
-
-        $zoom = 17;
-
-        $process = new Process(['python','C:\xampp\htdocs\SnapMap\public\MDTest.py','43.99128','22.87636','43.99241','22.87936',$zoom,'cecisymfony','1']);
-        $process->run();
-
-        if(!$process->isSuccessful()){
-            throw new ProcessFailedException($process);
-        }
-        echo $process->getOutput();
-        return new Response("hello");
+        return $this->render('homepage.html.twig');
 
     }
 
