@@ -11,9 +11,9 @@ from urllib import request
 
 class MapDownloader(object):
     def __init__(self, lat_start, lng_start, lat_end, lng_end, zoom=12, tile_size=256):
-        # self.tile_server = 'https://mts1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'
+        self.tile_server = 'https://mts1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'
         # self.tile_server = 'http://tile.openstreetmap.org/{z}/{x}/{y}.png'
-        self.tile_server = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+        # self.tile_server = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
 
         self.lat_start = lat_start
         self.lng_start = lng_start
