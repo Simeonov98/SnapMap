@@ -26,64 +26,64 @@ class ScripttController extends AbstractController
      */
     public function generatee(Request $request, $id, $opt)
     {
-//        $em = $this->getDoctrine()->getManager();
-//        $file = $this->getDoctrine()->getRepository(File::class)->findOneBy(['id' => $id]);
-//        $uploads_dir = $this->getParameter('uploads_directory');
-//        $dirOfFolder = substr($uploads_dir, 0, -7);
-//        $name = substr($file->getCoordFile(), -36);
-//
-//
-//        $gpx = simplexml_load_file("uploads/{$name}");
-//        $i = 0;
-//        foreach ($gpx->wpt as $pt) {
-//            $lat = (string)$pt['lat'];
-//            $lon = (string)$pt['lon'];
-//            $ele = (string)$pt->ele;
-//            $i++;
-//            $double_lat = (double)$lat;
-//            $double_lon = (double)$lon;
-//            $formLat = number_format($double_lat, 5);
-//            $formLon = number_format($double_lon, 5);
-//            $upperLeftLat = $formLat + 0.00300;
-//            $upperLeftLon = $formLon - 0.00350;
-//            $lowerRightLat = $formLat - 0.00300;
-//            $lowerRightLon = $formLon + 0.00350;
-//            $zoom = 17;
-//            $process = new Process(['python', 'C:\xampp\htdocs\SnapMap\public/MD' . $opt . '.py ', $upperLeftLat, $upperLeftLon, $lowerRightLat, $lowerRightLon, $zoom, $i, substr($name, 0, -4)]);
-//            $process->run();
-//
-//            if (!$process->isSuccessful()) {
-//                throw new ProcessFailedException($process);
-//            }
-//            $output = $process->getOutput();
-//
-//
-//        }
-//        unset($gpx);
-//
-//        $dirPath = $dirOfFolder . substr($name, 0, -4);
-//        $zipPath = $dirOfFolder . substr($name, 0, -4) . ".zip";
-//
-//
-//        $zip = self::zipDir($dirPath, $zipPath);
-//        if ($zip) {
-//
-//            $output2 = "\n Archive created successfully.";
-//        } else {
-//            $output2 = "\n Failed to archive the files";
-//        }
-//
-//        $file->setArchiveFile($zipPath);
-//        $em->persist($file);
-//        $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $file = $this->getDoctrine()->getRepository(File::class)->findOneBy(['id' => $id]);
+        $uploads_dir = $this->getParameter('uploads_directory');
+        $dirOfFolder = substr($uploads_dir, 0, -7);
+        $name = substr($file->getCoordFile(), -36);
+
+
+        $gpx = simplexml_load_file("uploads/{$name}");
+        $i = 0;
+        foreach ($gpx->wpt as $pt) {
+            $lat = (string)$pt['lat'];
+            $lon = (string)$pt['lon'];
+            $ele = (string)$pt->ele;
+            $i++;
+            $double_lat = (double)$lat;
+            $double_lon = (double)$lon;
+            $formLat = number_format($double_lat, 5);
+            $formLon = number_format($double_lon, 5);
+            $upperLeftLat = $formLat + 0.00300;
+            $upperLeftLon = $formLon - 0.00350;
+            $lowerRightLat = $formLat - 0.00300;
+            $lowerRightLon = $formLon + 0.00350;
+            $zoom = 17;
+            $process = new Process(['python', 'C:\xampp\htdocs\SnapMap\public/MD' . $opt . '.py ', $upperLeftLat, $upperLeftLon, $lowerRightLat, $lowerRightLon, $zoom, $i, substr($name, 0, -4)]);
+            $process->run();
+
+            if (!$process->isSuccessful()) {
+                throw new ProcessFailedException($process);
+            }
+            $output = $process->getOutput();
+
+
+        }
+        unset($gpx);
+
+        $dirPath = $dirOfFolder . substr($name, 0, -4);
+        $zipPath = $dirOfFolder . substr($name, 0, -4) . ".zip";
+
+
+        $zip = self::zipDir($dirPath, $zipPath);
+        if ($zip) {
+
+            $output2 = "\n Archive created successfully.";
+        } else {
+            $output2 = "\n Failed to archive the files";
+        }
+
+        $file->setArchiveFile($zipPath);
+        $em->persist($file);
+        $em->flush();
 
         //samo za test na stranicata iztrii gi posle
-        $output="Alabalanicaturskapanica mnogo text asdasdjaosdjaosdj aois
-        jd aoj aosjdoajsd oaijsdoajsodijaosjdoajsodkjoasjdoajo jaojao jao 
-        jaojaosdjaojdsoaijdoajdiauhdaysgdeirjpsjuhw eodij asdhf wuehr eur 
-        pakd uedhfgasiodjfoaiujsh uyhfhrgidjfhush uughoifbh oedrfghediufrhg eiurhg";
-        $output2 = "tuka ima tuka nema";
-        $zipPath="asdasdasdasdasdasdasdasda";
+//        $output="Alabalanicaturskapanica mnogo text asdasdjaosdjaosdj aois
+//        jd aoj aosjdoajsd oaijsdoajsodijaosjdoajsodkjoasjdoajo jaojao jao
+//        jaojaosdjaojdsoaijdoajdiauhdaysgdeirjpsjuhw eodij asdhf wuehr eur
+//        pakd uedhfgasiodjfoaiujsh uyhfhrgidjfhush uughoifbh oedrfghediufrhg eiurhg";
+//        $output2 = "tuka ima tuka nema";
+//        $zipPath="asdasdasdasdasdasdasdasda";
 
 
         return $this->render('processOutput.html.twig', [
