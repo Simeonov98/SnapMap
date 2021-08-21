@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container my-1 pb-1 bg-light rounded" style="width: 25rem;">
+        <div class="row ml-1  align-items-center">
+            <p>Избраните от Вас опции са:</p>
+        </div>
+        <hr>
+        <div class="row">
+            <ul>
+                <li>
+                    Потребител: {{ usrname }}
+                </li>
+                <li>
+                    Име на файла: {{ fname }}
+                </li>
+                <li>
+                    Избрана опция за сървъра: {{ onlyOpt }}
+                </li>
+            </ul>
+        </div>
+        <hr>
+        <a class="btn btn-success text-center" href="{{ path('generate',{'id': filee.id,'opt':onlyOpt}) }}">Генерирай</a>
+        <br>
+    </div>
+
+{% endblock %}

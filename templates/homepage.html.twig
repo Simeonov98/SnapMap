@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 {% block title %}  {% endblock %}
 
-{% block body %}
+{% block content %}
     {# <div class="overflow-auto"> #}
     {# <div class="jumbotron jumbotron-fluid "> #}
     <div class="container-fluid bg-light text-center">
         <h3 class="display-5">Здравейте!</h3>
         <p class="lead">Добре дошли в SnapMap! Това е сайт, който Ви ползволява автоматизирано да извличате географски
             данни по предварително зададен маршрут. </p>
-        <p class="lead"> Препоръчваме Ви да използвате <a href="https://www.gpxgenerator.com/"> www.gpxgenerator.com</a>
+        <p class="lead"> Препоръчваме Ви да използвате <a href="https://www.gpxgenerator.com/" target="_blank"> www.gpxgenerator.com</a>
             като най-надежден генератор.</p>
         <p class="lead"> Можете да последвате стъпките в инструкциите.</p>
     </div>
     {# </div> #}
 
-    <div class="container">
+    <div class="container d-flex h-100 justify-content-center">
         <div class="row mt-1">
             <div class="col-2">
             </div>
@@ -52,7 +52,7 @@
                             </li>
                         </ol>
                         <div class="col-md-12 text-center">
-                            <a class="btn btn-primary" href="{{ path('app_upload_index') }}" role="button">Продължете...</a>
+                            <a class="btn btn-primary" href="{{ path('app_upload_index') }}" role="button">Kaчете файл</a>
                         </div>
                     </div>
                 </div>

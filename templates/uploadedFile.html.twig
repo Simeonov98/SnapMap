@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container mt-1 bg-warning rounded" style="width: 25rem;">
+        <p>Името на каченият от Вас файл е: {{ usrname }}, но той ще бъде записан като {{ coordsFileName }}</p>
+    </div>
+    <div class="container mt-1 bg-light rounded" style="width: 25rem;">
+        <form action="{{ path('options',{'file':filee}) }}" method="post" enctype="multipart/form-data">
+            <fieldset class="form-group">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <legend class="col-form-label align-items-center">Изберете кой от сървърите да
+                            използвате
+                            за генериране на изображенията:
+                        </legend>
+                    </div>
+                    <div class="container ml-2">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                                           value="optionGoogle">
+                                    <label class="form-check-label" for="gridRadios1">
+                                        GoogleMaps
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                                           value="optionArcgis">
+                                    <label class="form-check-label" for="gridRadios2">
+                                        Arcgisonline
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
+                                           value="optionOpen">
+                                    <label class="form-check-label" for="gridRadios3">
+                                        OpenStreetMap
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 text-center" style="padding-bottom: 10px">
+                                <input type="submit" class="btn btn-primary" value="Продължи">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+        </form>
+    </div>
+{% endblock %}
