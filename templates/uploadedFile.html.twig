@@ -2,15 +2,15 @@
 
 {% block content %}
     <div class="container mt-1 bg-warning rounded" style="width: 25rem;">
-        <p>Името на каченият от Вас файл е: {{ usrname }}, но той ще бъде записан като {{ coordsFileName }}</p>
+        <p>Името на качения от файл е: {{ usrname }}, но той ще бъде записан като {{ coordsFileName }}</p>
     </div>
     <div class="container mt-1 bg-light rounded" style="width: 25rem;">
         <form action="{{ path('options',{'file':filee}) }}" method="post" enctype="multipart/form-data">
             <fieldset class="form-group">
                 <div class="row">
                     <div class="col-lg-12">
-                        <legend class="col-form-label align-items-center">Изберете кой от сървърите да
-                            използвате
+                        <legend class="col-form-label align-items-center">Избери кой от сървърите да
+                            използваш
                             за генериране на изображенията:
                         </legend>
                     </div>
