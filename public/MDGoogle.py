@@ -96,8 +96,7 @@ class MapDownloader(object):
         source = "{name} {number}.png".format(number=sys.argv[6],name = sys.argv[7])
         destination = sys.argv[7]
         shutil.move(source,destination)
-        # remove temp dir
-        # shutil.rmtree(directory)
+
 
 
 def main():
