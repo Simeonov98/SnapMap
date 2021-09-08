@@ -6,13 +6,10 @@ namespace App\Controller;
 
 use App\Entity\File;
 use App\Entity\User;
-use PHPUnit\Util\Filesystem;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Constraints\Date;
 
 class UploadController extends AbstractController
 {
@@ -90,8 +87,7 @@ class UploadController extends AbstractController
         $onlyOpt = substr($options, 6);
 
         $fname = substr($file->getCoordFile(), -36);
-//        dump($fname);
-//        die;
+
         return $this->render('check.html.twig',[
             'options' => $options,
             'usrname' => $user->getUsername(),

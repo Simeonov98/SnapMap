@@ -77,13 +77,7 @@ class ScripttController extends AbstractController
         $em->persist($file);
         $em->flush();
 
-        //samo za test na stranicata iztrii gi posle
-//        $output="Alabalanicaturskapanica mnogo text asdasdjaosdjaosdj aois
-//        jd aoj aosjdoajsd oaijsdoajsodijaosjdoajsodkjoasjdoajo jaojao jao
-//        jaojaosdjaojdsoaijdoajdiauhdaysgdeirjpsjuhw eodij asdhf wuehr eur
-//        pakd uedhfgasiodjfoaiujsh uyhfhrgidjfhush uughoifbh oedrfghediufrhg eiurhg";
-//        $output2 = "tuka ima tuka nema";
-//        $zipPath="asdasdasdasdasdasdasdasda";
+
 
 
         return $this->render('processOutput.html.twig', [
@@ -113,9 +107,7 @@ class ScripttController extends AbstractController
 
         $response->headers->set("Content-Disposition",$disposition);
 
-//        if (!empty($file)) {
-//            return new BinaryFileResponse($file->getArchiveFile());
-//        }
+
         if (!empty($file)) {
             return $response;
         }

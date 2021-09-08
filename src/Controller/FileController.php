@@ -47,49 +47,5 @@ class FileController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route('/{id}', name: 'file_show', methods: ['GET'])
-//    */
-//     public function show(File $file): Response
-//    {
-//        return $this->render('file/show.html.twig', [
-//            'file' => $file,
-//        ]);
-//    }
-//    /**
-//    @Route('/{id}/edit', name: 'file_edit', methods: ['GET', 'POST']);
-//     */
-//    public function edit(Request $request, File $file): Response
-//    {
-//        $form = $this->createForm(FileType::class, $file);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $this->getDoctrine()->getManager()->flush();
-//
-//            return $this->redirectToRoute('file_index', [], Response::HTTP_SEE_OTHER);
-//        }
-//
-//        return $this->renderForm('file/edit.html.twig', [
-//            'file' => $file,
-//            'form' => $form,
-//        ]);
-//    }
 
-//    /**
-//     * @Route('/{id}', name: 'file_delete', methods: ['POST']);
-//     * @param Request $request
-//     * @param File $file
-//     * @return Response
-//     */
-//    public function delete(Request $request, File $file): Response
-//    {
-//        if ($this->isCsrfTokenValid('delete'.$file->getId(), $request->request->get('_token'))) {
-//            $entityManager = $this->getDoctrine()->getManager();
-//            $entityManager->remove($file);
-//            $entityManager->flush();
-//        }
-//
-//        return $this->redirectToRoute('file_index', [], Response::HTTP_SEE_OTHER);
-//    }
 }
