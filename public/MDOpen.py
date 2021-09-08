@@ -11,9 +11,9 @@ from urllib import request
 
 class MapDownloader(object):
     def __init__(self, lat_start, lng_start, lat_end, lng_end, zoom=12, tile_size=256):
-        # self.tile_server = 'https://mts1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'
+
         self.tile_server = 'http://tile.openstreetmap.org/{z}/{x}/{y}.png'
-        # self.tile_server = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+
 
         self.lat_start = lat_start
         self.lng_start = lng_start
@@ -73,22 +73,7 @@ class MapDownloader(object):
                 self.queue.append(temp_list)
                 idx += 1
 
-        # stop workers
-        #for i in range(self.num_worker):
-            #self.q.put(None)
 
-        # start fetching tile using multithread to speed up process
-        # self.q_size = self.q.qsize()
-
-        """threads = []
-        for i in range(self.num_worker):
-            t = threading.Thread(target=self._fetch_worker)
-            t.start()
-            threads.append(t)
-
-        for t in threads:
-            t.join()
-        """
         for index, elt in enumerate(self.queue):
             idx = elt[0]
             url = elt[1]
@@ -112,21 +97,17 @@ class MapDownloader(object):
         source = "{name} {number}.png".format(number=sys.argv[6],name = sys.argv[7])
         destination = sys.argv[7]
         shutil.move(source,destination)
-        # remove temp dir
-        # shutil.rmtree(directory)
+
 
 
 def main():
-    #try:
-        #md = MapDownloader(-6.256524, 107.170208, -6.292112, 107.242934, zoom=17)
-        #md = MapDownloader(43.99128, 22.87636, 43.99241, 22.87936, zoom=17)
+
     md = MapDownloader(float(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3]), float(sys.argv[4]), zoom=int(sys.argv[5]))
-        #md = MapDownloader(44.00606, 22.85903, 43.97080, 22.89404, zoom=19)
+
     md.write_into('{name} {number}.png'.format(number = sys.argv[6],name = sys.argv[7]))
 
     print("The map has successfully been created")
-    #except Exception as e:
-    #print( "Could not generate the image - try adjusting the zoom level and checking your coordinates. Cause: {}".format( e))
+
 
 
 if __name__ == '__main__':
