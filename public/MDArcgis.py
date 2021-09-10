@@ -39,17 +39,7 @@ class MapDownloader(object):
 
         return int(point_x), int(point_y)
 
-    def _fetch_worker(self):
-        while True:
-            item = self.q.get()
-            if item is None:
-                break
 
-            idx, url, current_tile = item
-            print('Fetching #{} of {}: {}'.format(idx, len(self.queue), url))
-            request.urlretrieve(url, current_tile)
-
-            self.q.task_done()
 
     def write_into(self, filename):
         # create temp dir
