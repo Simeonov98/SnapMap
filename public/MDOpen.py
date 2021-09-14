@@ -6,8 +6,8 @@ import os
 import shutil
 from PIL import Image
 from datetime import datetime
-from urllib import request
-
+#from urllib import request
+import urllib.request
 
 class MapDownloader(object):
     def __init__(self, lat_start, lng_start, lat_end, lng_end, zoom=12, tile_size=256):
@@ -21,7 +21,7 @@ class MapDownloader(object):
         self.lng_end = lng_end
         self.zoom = zoom
         self.tile_size = tile_size
-        
+
         self.queue = []
 
         self._generate_xy_point()
@@ -69,7 +69,10 @@ class MapDownloader(object):
             url = elt[1]
             current_tile = elt[2]
             print('Fetching #{} : {}'.format(idx, url))
-            request.urlretrieve(url, current_tile)
+            opener = urllib.request.build_opener()
+            opener.addheaders = [('User-agent', 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36')]
+            urllib.request.install_opener(opener)
+            urllib.request.urlretrieve(url, current_tile)
 
 
         # combine image into single

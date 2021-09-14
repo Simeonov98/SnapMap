@@ -63,12 +63,12 @@ class MapDownloader(object):
                 idx += 1
 
 
-        for elt in enumerate(self.queue):
-            idx = elt[0]
-            url = elt[1]
-            current_tile = elt[2]
-            print('Fetching #{} : {}'.format(idx, url))
-            request.urlretrieve(url, current_tile)
+        for index, elt in enumerate(self.queue):
+                    idx = elt[0]
+                    url = elt[1]
+                    current_tile = elt[2]
+                    print('Fetching #{} : {}'.format(idx, url))
+                    request.urlretrieve(url, current_tile)
 
 
         # combine image into single

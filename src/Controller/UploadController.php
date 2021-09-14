@@ -37,6 +37,13 @@ class UploadController extends AbstractController
 
         $em = $this->getDoctrine()->getManager();
 
+        $extention = pathinfo( $_FILES['coords']['name']);
+        if($extention['extension'] != 'gpx' ){
+            return $this->render("error.html.twig",[
+                "ext" => $extention['extension']
+                ]);
+        }
+
 
         if ($this->getDoctrine()->getRepository(User::class)->findOneBy(['Username' => $usrname]) != null) {
             $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(["Username" => $usrname]);

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container mt-1 bg-warning rounded" style="width: 25rem; margin: auto">
+        <p> Грешен формат на файла! Моля качете файл с правилното разширение GPX. </p>
+        <p> Качения от теб файл е с разширение: {{ ext }}!</p>
+    </div>
+    <div class="col-md-12 text-center">
+        <a class="btn btn-primary" href="{{ path('app_upload_index') }}" role="button">Kaчи файл</a>
+    </div>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

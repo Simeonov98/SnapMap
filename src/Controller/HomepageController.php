@@ -12,14 +12,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomepageController extends AbstractController
 {
-    /**
-     * @Route("/")
-     */
-    public function homepage(): Response
-    {
-        return $this->render('homepage.html.twig');
+        /**
+         * @Route("/")
+         */
+        public function homepage(): Response
+        {
+            return $this->render('homepage.html.twig');
 
-    }
+        }
 
 
 }
